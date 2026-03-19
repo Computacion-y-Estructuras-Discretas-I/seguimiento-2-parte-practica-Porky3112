@@ -3,7 +3,9 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
+
         int na = sc.nextInt(), nb = sc.nextInt(), k = sc.nextInt();
 
         int[] servidorA = new int[na];
@@ -29,7 +31,29 @@ public class Main {
     public static TreeSet<Integer> jugadoresActivos(int[] servidorA,
                                                      int[] servidorB,
                                                      int[] baneados) {
-        // TODO: implemente este método
-        return new TreeSet<>();
+
+        TreeSet<Integer> servidorAm = new TreeSet<>();
+        TreeSet<Integer> servidorBm = new TreeSet<>();
+        TreeSet<Integer> servidorBan = new TreeSet<>();
+
+        for(int i = 0; i < servidorA.length; i++){
+
+            servidorAm.add(servidorA[i]);
+        }
+
+        for(int i = 0; i < servidorB.length; i++){
+
+            servidorBm.add(servidorB[i]);
+        }
+
+        for(int i = 0; i < baneados.length; i++){
+            servidorBan.add(baneados[i]);
+        }
+
+        servidorAm.addAll(servidorBm);
+
+        servidorAm.removeAll(servidorBan);
+
+        return servidorAm;
     }
 }
